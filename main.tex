@@ -1,0 +1,72 @@
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[oldstylenums]{kpfonts}
+\usepackage{enumitem}
+\setlist{topsep=0pt, leftmargin=0em,itemsep=0em}
+
+\RequirePackage[
+                backend=biber,
+                style=biblatex-mnras,
+                hyperref=true,
+               	uniquename=false,
+               	uniquelist=false
+                ]{biblatex}
+
+\addbibresource{paper.bib}  % file with references
+
+
+\RequirePackage{hyperref}  % for links and references
+
+\hypersetup{				% setup the hyperref-package options
+	plainpages=false,		% 	-
+	linktoc=page,			%	- 
+	colorlinks=true,		% 	- colorize links?
+	linkcolor=blue,
+	citecolor=blue,
+	%urlcolor=blue,
+	pdfborder={0 0 0},		% 	-
+	breaklinks=true,			% 	- allow line break inside links
+	bookmarksnumbered=true,	%
+	bookmarksopen=true,		%
+	bookmarksdepth=2
+}
+
+\makeatletter
+\newcommand\Setmaxbibnames[1]{\renewcommand\blx@maxbibnames{#1}}
+\makeatletter
+
+
+\title{biblatex-mnras}
+\author{Fabian Scheuermann}
+\date{June 2022}
+
+% find bad characters
+\DeclareUnicodeCharacter{0301}{*************************************}
+
+\begin{document}
+
+\maketitle
+
+based on the \href{https://academic.oup.com/mnras/pages/general_instructions?login=false#6.3\%20References\%20and\%20citations}{Instructions to Authors} from the MNRAS.
+
+\section*{Publications}
+\begin{refsection}[publications.bib]
+\Setmaxbibnames{1}
+\nocite{*}
+
+\printbibliography[heading=none]
+\end{refsection}
+
+
+\newpage
+\section{Introduction}
+% just some text to showcase how the main bibliography looks
+The exact time scale on which HII regions evolve is difficult to pin down. One approach is via the ages of underlying star clusters \parencite[e.g.][]{Whitmore+2011,Hannon+2019,Hannon+2022,Stevance+2020}
+, which can be estimated by fitting the observed \emph{spectral energy distribution} (SED) to theoretical models \parencite{Turner+2021}. Another approach is with the help of statistical models \parencite[e.g.][]{Chevance+2020a,Kim+2021}. 
+Direct constraints from the ionised nebula on the other hand are rather rare \parencite{Dottori+1981}. One possibility is the H$\alpha$ equivalent width EW(H$\alpha$) \parencite{Copetti+1986,Fernandes+2003,Levesque+2013}. Another possible route is via the H$\alpha$/FUV ratio. Both fluxes are extensively used, most commonly as tracers for star formation \parencite{Hermanowicz+2013,Meurer+2009}, but they have also been used on cloud scales as age indicators \parencite[e.g.][]{SanchezGil+2011,Faesi+2014}. The H$\alpha$ flux is dominated by the most massive stars in the cluster. The FUV and the stellar continuum on the other hand have a significant contribution from lower mass stars. Hence once the most massive stars start to die, both ratios start to decline. This can also be seen in models like \textsc{starburst99} \parencite{Leitherer+2014}, \textsc{bpass} \parencite{Eldridge+2009} or \textsc{cloudy} \parencite{Ferland+2017}, which predict that the ratio decreases monotonically with the age of the cluster.
+
+\printbibliography[title={References}]
+
+
+\end{document}

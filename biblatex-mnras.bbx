@@ -1,0 +1,233 @@
+%% ---------------------------------------------------------------
+%% biblatex-mnras --- A biblatex implementation of the MNRAS
+%%   bibliography style
+%% Maintained by Fabian Scheuermann
+%% E-mail: f.scheuermann@uni-heidelberg.de
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%% ---------------------------------------------------------------
+%% 
+
+\ProvidesFile{biblatex-mnras.bbx}[2022/06/10 v1.0 biblatex bibliography style]
+
+% Load the standard style to avoid copy-pasting unnecessary material
+\RequireBibliographyStyle{authoryear}
+
+\ExecuteBibliographyOptions{
+  doi=false,
+  giveninits=true,
+  minbibnames=1,
+  maxbibnames=8,
+}
+
+
+% ---------------------------------------------------------------
+% define abbreviations for the jounrals
+% ---------------------------------------------------------------
+
+\InitializeBibliographyStyle{
+%
+%  These Macros are taken from the AAS TeX macro package version 5.2
+%  and are compatible with the macros in the A&A document class
+%  version 7.0
+
+\let\jnl@style=\textrm
+\def\ref@jnl#1{{\jnl@style#1}}
+
+\def\aj{\ref@jnl{AJ}}                   % Astronomical Journal
+\def\actaa{\ref@jnl{Acta Astron.}}      % Acta Astronomica
+\def\araa{\ref@jnl{ARA\&A}}             % Annual Review of Astron and Astrophys
+\def\apj{\ref@jnl{ApJ}}                 % Astrophysical Journal
+\def\apjl{\ref@jnl{ApJ}}                % Astrophysical Journal, Letters
+\def\apjs{\ref@jnl{ApJS}}               % Astrophysical Journal, Supplement
+\def\apss{\ref@jnl{Ap\&SS}}             % Astrophysics and Space Science
+\def\aap{\ref@jnl{A\&A}}                % Astronomy and Astrophysics
+\def\aapr{\ref@jnl{A\&A~Rev.}}          % Astronomy and Astrophysics Reviews
+\def\aaps{\ref@jnl{A\&AS}}              % Astronomy and Astrophysics, Supplement
+\def\baas{\ref@jnl{BAAS}}               % Bulletin of the AAS
+\def\cise{\ref@jnl{Comput Sci Eng}}     % Computing in science & engineering
+\def\epja{\ref@jnl{Eur. Phys. J. A}}    % European Physical Journal A               
+\def\icarus{\ref@jnl{Icarus}}           % Icarus
+\def\mnras{\ref@jnl{MNRAS}}             % Monthly Notices of the RAS
+\def\pasp{\ref@jnl{PASP}}               % Publications of the ASP
+\def\pasj{\ref@jnl{PASJ}}               % Publications of the ASJ
+\def\pasc{\ref@jnl{Publ. Astron. Soc. Pac.}}  % Publications of the Astronomical Society of the Pacific
+\def\ssr{\ref@jnl{Space~Sci.~Rev.}}     % Space Science Reviews
+\def\zap{\ref@jnl{ZAp}}                 % Zeitschrift fuer Astrophysik
+\def\nat{\ref@jnl{Nature}}              % Nature
+\def\iaucirc{\ref@jnl{IAU~Circ.}}       % IAU Cirulars
+\def\aplett{\ref@jnl{Astrophys.~Lett.}} % Astrophysics Letters
+\def\planss{\ref@jnl{Planet.~Space~Sci.}}   % Planetary Space Science
+\def\procspie{\ref@jnl{Proc.~SPIE}}   % Proceedings of the SPIE
+\def\rmxaa{\ref@jnl{Rev. Mex. Astron. Astrofis.}}   % Rev. Mex. Astron. Astrofis.
+
+\let\astap=\aap
+\let\apjlett=\apjl
+\let\apjsupp=\apjs
+\let\applopt=\ao
+
+% use comma instead of point
+\renewcommand*{\newunitpunct}{\addcomma\space}
+% nothing point at the end of the reference
+\renewcommand*{\finentrypunct}{} 
+}
+
+% no pagination
+% https://stackoverflow.com/questions/58448860/how-can-i-add-colons-and-remove-p-pp-from-in-text-citations-with-biblatex
+\DefineBibliographyStrings{english}{%
+  page             = {},
+  pages            = {},
+} 
+
+
+% display only starting page of page range
+% https://tex.stackexchange.com/questions/33565/displaying-only-the-starting-page-of-a-page-range-in-bibliographies
+\DeclareFieldFormat{pages}{\mkfirstpage[{\mkpageprefix[bookpagination]}]{#1}}
+
+% set the journal name in roman
+% https://tex.stackexchange.com/questions/454672/biblatex-journal-name-non-italic
+\DeclareFieldFormat{journaltitle}{#1\isdot}
+
+% order of surname and first name in bibliography
+\DeclareNameAlias{sortname}{family-given}
+
+% only use `and` between exactly two authors
+\DeclareDelimFormat{finalnamedelim}{%
+  \ifnumgreater{\value{liststop}}{2}{%
+    \printdelim{multinamedelim}}{\addspace\bibstring{and}\space}}
+
+% Modify the name format
+\DeclareNameFormat{default}{%
+  \nameparts{#1}%
+  \usebibmacro{name:given-family}
+    {\namepartfamily}
+    {\namepartgiveni}
+    {\namepartprefix}
+    {\namepartsuffix}%
+  \usebibmacro{name:andothers}%
+}
+
+\renewbibmacro*{name:andothers}{%
+  \ifboolexpr{
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+    and
+    test \ifmorenames
+  }
+    {%
+      \ifnumgreater{\value{liststop}}{1}
+        {\finalandcomma}
+        {}%
+      \andothersdelim
+      \bibstring[\mkbibemph]{andothers}%
+    }
+    {}%
+}
+
+
+% ---------------------------------------------------------------
+% define links to ads and journal
+% ---------------------------------------------------------------
+
+% https://tex.stackexchange.com/questions/286704/how-to-add-adsurl-field-as-link-to-bibliography
+\DeclareDatamodelFields[type=field,datatype=verbatim]{adsurl}
+\DeclareDatamodelEntryfields{adsurl}
+
+\DeclareFieldFormat{link1}{%
+  \iffieldundef{doi}{%
+    \iffieldundef{eprint}{%
+      \iffieldundef{doi}{%
+        \iffieldundef{url}{%
+          #1%
+        }{%
+          \href{\thefield{url}}{\color{blue}#1}%
+        }%
+      }{%
+        \href{\thefield{adsurl}}{\color{blue}#1}%
+      }%
+    }{%
+      \href{https://arxiv.org/abs/\thefield{eprint}}{\color{blue}#1}%
+    }%
+  }{%
+    \href{http://dx.doi.org/\thefield{doi}}{\color{blue}#1}%
+  }%
+}
+
+\DeclareFieldFormat{link2}{%
+  \iffieldundef{adsurl}{%
+    \iffieldundef{eprint}{%
+      \iffieldundef{doi}{%
+        \iffieldundef{url}{%
+          #1%
+        }{%
+          \href{\thefield{url}}{#1}%
+        }%
+      }{%
+        \href{http://dx.doi.org/\thefield{doi}}{#1}%
+      }%
+    }{%
+      \href{https://arxiv.org/abs/\thefield{eprint}}{#1}%
+    }%
+  }{%
+    \href{\thefield{adsurl}}{#1}%
+  }%
+}
+
+% add character to year if multiple entries from one author
+\renewbibmacro*{date+extrayear}{%
+    \iffieldundef{year}
+      {}
+      {\printtext{%
+     \addperiod\space\printfield{labelyear}%
+     \printfield{extradate}}}}
+
+
+\DeclareBibliographyDriver{article}{%
+  %\usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printnames{author}%
+  \newunit\newblock
+  \usebibmacro{date+extrayear}%
+  \newunit\newblock
+  \printtext[link1]{%
+  \usebibmacro{journal}%
+    }%
+  \newunit
+  \printtext[link2]{%
+  \printfield{volume}%
+  \newunit
+  \printfield{pages}%
+  }%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inproceedings}{%
+  %\usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printnames{author}%
+  \newunit\newblock
+  \printfield{date+extrayear}%
+  \newunit\newblock
+  \printtext[link1]{%
+  \usebibmacro{booktitle}%
+    }%
+  \newunit
+  \printtext[link2]{%
+  \printfield{pages}%
+  }%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printnames{author}%
+  \newunit\newblock
+  \printfield{date+extrayear}%
+  \newunit\newblock
+  \printtext[link1]{%
+  \printlist{publisher}%
+    }%
+  \newunit
+  \printtext[link2]{%
+  \printfield{title}%
+  }%
+  \usebibmacro{finentry}}
+
