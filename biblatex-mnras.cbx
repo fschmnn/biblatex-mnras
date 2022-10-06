@@ -24,6 +24,8 @@ uniquelist=false
 % use ampercent between two authors
 % https://tex.stackexchange.com/questions/455828/biblatex-multiple-authors-and-should-become-dot-between-title-and-pu
 \DeclareDelimFormat{finalnamedelim}{\addspace\&\space}
+% remove a comma between name and year if natbib=true ist used
+\DeclareDelimFormat{nameyeardelim}{\addspace}
 
 % up to theree authors are written out but second time et al. is used
 % https://tex.stackexchange.com/questions/48846/biblatex-et-al-beginning-from-second-citation
