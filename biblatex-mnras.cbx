@@ -1,27 +1,28 @@
-% ---------------------------------------------------------------------
-% biblatex-mnras -- A biblatex implementation of the MNRAS
-%   citation style
-% Maintained by Fabian Scheuermann
-% E-mail: f.scheuermann@uni-heidelberg.de
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-% ---------------------------------------------------------------------
+%% ---------------------------------------------------------------
+%% biblatex-mnras --- A biblatex implementation of the MNRAS
+%%   citation style
+%% Maintained by Fabian Scheuermann
+%% E-mail: f.scheuermann@uni-heidelberg.de
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%% ---------------------------------------------------------------
+%% 
 
 \ProvidesFile{biblatex-mnras.cbx}[2022/06/10 v1.0 biblatex citation style]
 
-% this style is based on the authoryear-comp citation style
+% Load the standard style to avoid copy-pasting unnecessary material
 \RequireCitationStyle{authoryear-comp}
 
 \ExecuteBibliographyOptions{
-citetracker=true,                 % we need this to change to et al. the second time
-mincitenames=1,                   % more than 2 authors are written first author et al.
-maxcitenames=2,                   % 
-sorting=ynt,                      % sort citations by year and then name
-uniquename=false,       
+citetracker=true,   % we need this to change to et al. the second time
+mincitenames=1,
+maxcitenames=2,
+sorting=ynt,
+uniquename=false,
 uniquelist=false
 }
 
-% use ampercent between two authors
+% use ampercent between authors
 % https://tex.stackexchange.com/questions/455828/biblatex-multiple-authors-and-should-become-dot-between-title-and-pu
 \DeclareDelimFormat{finalnamedelim}{\addspace\&\space}
 % remove a comma between name and year if natbib=true ist used
@@ -30,3 +31,20 @@ uniquelist=false
 % up to theree authors are written out but second time et al. is used
 % https://tex.stackexchange.com/questions/48846/biblatex-et-al-beginning-from-second-citation
 \AtEveryCitekey{\ifciteseen{}{\defcounter{maxnames}{3}}}
+
+
+% the citealias commands (from natbib=true) do not contain hyperlinks
+\DeclareCiteCommand{\citetalias}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[bibhyperref]{\@citealias{\thefield{entrykey}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citepalias}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[bibhyperref]{\@citealias{\thefield{entrykey}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
