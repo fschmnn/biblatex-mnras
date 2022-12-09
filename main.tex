@@ -18,9 +18,15 @@
     urlcolor=blue,
 	            ]{hyperref} 
 
+\makeatletter
+\newcommand\Setmaxbibnames[1]{\renewcommand\blx@maxbibnames{#1}}
+\makeatletter
+
 \title{biblatex-mnras}
 \author{Fabian Scheuermann}
 \date{June 2022}
+
+\DeclareUnicodeCharacter{0301}{***************}
 
 \begin{document}
 
@@ -36,19 +42,20 @@ This package implements the bibliography style of the \emph{Monthly Notices of t
     \item For more than three authors, use the first author et al., e.g. \parencite{Scheuermann+2022,Kreckel+2017}.
     \item For several papers by the same author(s), use the style \parencite{Jacoby+1989a,Jacoby1997} or \parencite{Anand+2021a,Anand+2021b} show that\dots
     \item When several papers are cited in brackets, they should be ordered by date and separated by semi-colons, e.g. \parencite{Lee+2022,Emsellem+2022,Leroy+2021a,Leroy+2021b}.
-    \item An example for a book \parencite{Osterbrock+2006}, a conference proceeding \parencite{Ciardullo+2013} and an arXiv preprint \parencite{Barnes+2022}
+    \item An example for a book \parencite{Osterbrock+2006}, conference proceeding \parencite{Ciardullo+2013} and arXiv preprint \parencite{Barnes+2022}
 \end{itemize}
 
-The package is intended to be used with the bibentries generated from the \emph{SAO/NASA Astrophysics Data System} (\href{https://ui.adsabs.harvard.edu/}{ads}). Those entries include the fields \texttt{adsurl}, \texttt{eprint} and \texttt{doi}. They are used to create links to the respective sites which are set behind the journal and volume/page part of the reference. The style can be loaded with
+The package is intended to be used with the bibentries generated from the SAO/NASA Astrophysics Data System (\href{https://ui.adsabs.harvard.edu/}{ads}). Those entries include the fields \texttt{adsurl}, \texttt{eprint} and \texttt{doi}. They are used to create links to the respective sites which are set behind the journal and volume/page part of the reference. The style can be loaded with
 
 \begin{verbatim}
 \usepackage[style=biblatex-mnras]{biblatex}
 \end{verbatim}
 
-\textbf{Note}: So far, only articles fulfill all style requirements. Other entry types require additional modifications.
+\textbf{Note}: So far, only articles, in-proceedings and books fulfil the style requirements. Other entry types require additional modifications (in the case of in-proceedings and books, multiple publications in the same year may cause problems).
 
 \newpage
-% this is needed to sort the bibliography differently than the citations
+%\nocite{*}
+% this is needed to sort the bibliography different than the citations
 \newrefcontext[sorting=nyt]
 \printbibliography[title={References}]
 

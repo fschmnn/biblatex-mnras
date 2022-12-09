@@ -10,4 +10,8 @@ The style can be loaded with
 \usepackage[style=biblatex-mnras]{biblatex}
 ```
 
-**note**: So far, only articles fulfill all style requirements. Other entry types require additional modifications.
+This repository also contains an example document [main.pdf](https://github.com/fschmnn/biblatex-mnras/blob/main/main.pdf) to showcase the style.
+
+**Note**: So far, only articles, in-proceedings and books fulfil the style requirements.
+Other entry types require additional modifications (in the case of in-proceedings and
+books, multiple publications in the same year may cause problems).
