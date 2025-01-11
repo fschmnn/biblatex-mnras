@@ -1,0 +1,84 @@
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[oldstylenums]{kpfonts}
+
+\RequirePackage[
+    backend=biber,
+    backref=false,
+    style=biblatex-mnras,
+    hyperref=true
+    ]{biblatex}
+
+\addbibresource{bibliography.bib}  
+
+\RequirePackage[
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+	]{hyperref} 
+
+\makeatletter
+\newcommand\Setmaxbibnames[1]{\renewcommand\blx@maxbibnames{#1}}
+\makeatletter
+
+\title{biblatex-mnras}
+\author{Fabian Scheuermann\thanks{f.scheuermann@uni-heidelberg.de}}
+\date{2025-01-11}
+
+\DeclareUnicodeCharacter{0301}{***************}
+
+\begin{document}
+
+\maketitle
+
+This package implements the bibliography style of the \emph{Monthly Notices of the Royal Astronomical Society} (MNRAS) in \texttt{biblatex}. 
+While there is an official \href{https://www.ctan.org/tex-archive/macros/latex/contrib/mnras}{MNRAS document class}, it only works with \texttt{natbib} for the bibliography management. 
+The package is intended to be used with the bibentries generated from the \textit{SAO/NASA Astrophysics Data System} (\href{https://ui.adsabs.harvard.edu/}{ADS}). Those entries include the fields \texttt{adsurl}, \texttt{eprint} and \texttt{doi}. They are used to create links to the respective sites which are set behind the journal and volume/page part of the reference. The style can be loaded with
+\begin{verbatim}
+\usepackage[style=biblatex-mnras]{biblatex}
+\end{verbatim}
+and for the correct sorting the following code is required before the \verb|\printbibliography|
+\begin{verbatim}
+\newrefcontext[sorting=nyt]
+\end{verbatim}
+A copy of this package can be obtained from \href{https://github.com/fschmnn/biblatex-mnras}{GitHub}.
+
+\section*{Style}
+
+The journal asks for an author (year) format and a detailed description can be found in the \href{https://academic.oup.com/mnras/pages/general_instructions?login=false#6.3\%20References\%20and\%20citations}{Instructions to Authors}. 
+In the text, the presentation depends on the number of authors:
+\begin{itemize}
+    \setlength{\itemsep}{-3pt}
+    \item One author is either written as \textcite{ArticleOneA} or \parencite{ArticleOneA}.
+    \item Two authors use an ampersand \textcite{ArticleTwo} or \parencite{ArticleTwo}. 
+    \item Three authors show all three names at first mention \parencite{ArticleThree}, but only the first author thereafter \parencite{ArticleThree}.
+    \item Four authors (or more) only show the first author \textcite{ArticleFourA} or \parencite{ArticleFourA}.
+    \item Several papers by the same author(s) are styled like \parencite{ArticleOneA,ArticleOneB} or \parencite{ArticleFourB,ArticleFourC}.
+    \item When several papers are cited in brackets, they should be ordered by date and separated by semi-colons \parencite{ArticleOneA,ArticleThree,ArticleTwo}.
+\end{itemize}
+The previous examples were all for articles. Here are some examples for other formats:
+\begin{itemize}
+    \setlength{\itemsep}{-3pt}
+    %arXiv preprint 
+    \item A Book looks like \textcite{Book}.
+    \item An InBook looks like \textcite{InBook}.
+    \item An InProceedings looks like \textcite{InProceedings}.
+    \item A Misc looks like \textcite{Misc}.
+    \item An Unpublished looks like \textcite{Unpublished}.
+\end{itemize}
+
+
+% https://www.bibtex.com/s/bibliography-style-mnras-mnras/
+\defbibnote{myprenote}{This is how the entries look in the bibliography:}
+\newrefcontext[sorting=nyt]
+\printbibliography[prenote=myprenote,title={References}]
+
+\section*{Issues}
+
+So far, not all entry types are implemented.
+In the case of in-proceedings and books, multiple publications from the same author in one year may cause problems. 
+The code was only tested with \texttt{biber} as the backend.
+
+\end{document}
