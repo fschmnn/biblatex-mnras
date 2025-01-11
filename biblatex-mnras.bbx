@@ -6,7 +6,6 @@
 %% Released under the LaTeX Project Public License v1.3c or later
 %% See http://www.latex-project.org/lppl.txt
 %% ---------------------------------------------------------------
-%% 
 
 \ProvidesFile{biblatex-mnras.bbx}[2022/06/10 v1.0 biblatex bibliography style]
 
@@ -18,7 +17,7 @@
   doi=false,
   giveninits=true,
   minbibnames=1,
-  maxbibnames=8,
+  maxbibnames=4,
   sorting=nyt
 }
 
@@ -31,40 +30,46 @@
 %  These Macros are taken from the AAS TeX macro package version 5.2
 %  and are compatible with the macros in the A&A document class
 %  version 7.0
+%  additional ones can be found here 
+%  http://cdsads.u-strasbg.fr/abs_doc/aas_macros.html
 
 \let\jnl@style=\textrm
 \def\ref@jnl#1{{\jnl@style#1}}
 
-\def\aj{\ref@jnl{AJ}}                   % Astronomical Journal
-\def\actaa{\ref@jnl{Acta Astron.}}      % Acta Astronomica
-\def\araa{\ref@jnl{ARA\&A}}             % Annual Review of Astron and Astrophys
-\def\apj{\ref@jnl{ApJ}}                 % Astrophysical Journal
-\def\apjl{\ref@jnl{ApJ}}                % Astrophysical Journal, Letters
-\def\apjs{\ref@jnl{ApJS}}               % Astrophysical Journal, Supplement
-\def\apss{\ref@jnl{Ap\&SS}}             % Astrophysics and Space Science
-\def\aap{\ref@jnl{A\&A}}                % Astronomy and Astrophysics
-\def\aapr{\ref@jnl{A\&A~Rev.}}          % Astronomy and Astrophysics Reviews
-\def\aaps{\ref@jnl{A\&AS}}              % Astronomy and Astrophysics, Supplement
-\def\baas{\ref@jnl{BAAS}}               % Bulletin of the AAS
-\def\cise{\ref@jnl{Comput Sci Eng}}     % Computing in science & engineering
-\def\epja{\ref@jnl{Eur. Phys. J. A}}    % European Physical Journal A               
-\def\icarus{\ref@jnl{Icarus}}           % Icarus
-\def\mnras{\ref@jnl{MNRAS}}             % Monthly Notices of the RAS
-\def\pasp{\ref@jnl{PASP}}               % Publications of the ASP
-\def\pasj{\ref@jnl{PASJ}}               % Publications of the ASJ
+\def\actaa{\ref@jnl{Acta Astron.}}            % Acta Astronomica
+\def\araa{\ref@jnl{ARA\&A}}                   % Annual Review of Astron and Astrophys
+\def\aj{\ref@jnl{AJ}}                         % Astronomical Journal
+\def\aplett{\ref@jnl{Astrophys.~Lett.}}       % Astrophysics Letters
+\def\apj{\ref@jnl{ApJ}}                       % Astrophysical Journal
+\def\apjl{\ref@jnl{ApJ}}                      % Astrophysical Journal, Letters
+\def\apjs{\ref@jnl{ApJS}}                     % Astrophysical Journal, Supplement
+\def\apss{\ref@jnl{Ap\&SS}}                   % Astrophysics and Space Science
+\def\aap{\ref@jnl{A\&A}}                      % Astronomy and Astrophysics
+\def\aapr{\ref@jnl{A\&A~Rev.}}                % Astronomy and Astrophysics Reviews
+\def\aaps{\ref@jnl{A\&AS}}                    % Astronomy and Astrophysics, Supplement
+\def\baas{\ref@jnl{BAAS}}                     % Bulletin of the AAS
+\def\cise{\ref@jnl{Comput Sci Eng}}           % Computing in science & engineering
+\def\epja{\ref@jnl{Eur. Phys. J. A}}          % European Physical Journal A               
+\def\iaucirc{\ref@jnl{IAU~Circ.}}             % IAU Cirulars
+\def\icarus{\ref@jnl{Icarus}}                 % Icarus
+\def\jcap{J.~Cosmology Astropart. Phys.}      % Journal of Cosmology and Astroparticle Physics
+\def\jrasc{J.~R.~Astron. Soc. Canada}         % Journal of the RAS of Canada
+\def\memras{Memoirs of the RAS}               % Memoirs of the RAS
+\def\mnras{\ref@jnl{MNRAS}}                   % Monthly Notices of the RAS
+\def\na{New~Astron.}                          % New Astronomy
+\def\nat{\ref@jnl{Nature}}                    % Nature
+\def\ptrsl{\ref@jnl{Philos.~Trans.~R.~Soc.~Lond.}} % Philosophical transactions of the Royal Society of London
+\def\physrep{\ref@jnl{Physics Reports}}       % Physics Reports
+\def\planss{\ref@jnl{Planet.~Space~Sci.}}     % Planetary Space Science
+\def\pnas{\ref@jnl{PNAS}}                     % Proceedings of the National Academy of Science
+\def\pasj{\ref@jnl{PASJ}}                     % Publications of the ASJ
+\def\pasp{\ref@jnl{PASP}}                     % Publications of the ASP
+\def\pasa{Publ. Astron. Soc. Australia}       % Publications of the Astronomical Society of Australia
 \def\pasc{\ref@jnl{Publ. Astron. Soc. Pac.}}  % Publications of the Astronomical Society of the Pacific
-\def\ssr{\ref@jnl{Space~Sci.~Rev.}}     % Space Science Reviews
-\def\zap{\ref@jnl{ZAp}}                 % Zeitschrift fuer Astrophysik
-\def\nat{\ref@jnl{Nature}}              % Nature
-\def\iaucirc{\ref@jnl{IAU~Circ.}}       % IAU Cirulars
-\def\aplett{\ref@jnl{Astrophys.~Lett.}} % Astrophysics Letters
-\def\planss{\ref@jnl{Planet.~Space~Sci.}}   % Planetary Space Science
-\def\procspie{\ref@jnl{Proc.~SPIE}}   % Proceedings of the SPIE
-\def\rmxaa{\ref@jnl{Rev. Mex. Astron. Astrofis.}}   % Rev. Mex. Astron. Astrofis.
-\def\jcap{J.~Cosmology Astropart. Phys.} % Journal of Cosmology and Astroparticle Physics
-\def\na{New~Astron.}                     % New Astronomy
-\def\jrasc{J.~R.~Astron. Soc. Canada}    % Journal of the RAS of Canada
-\def\pasa{Publ. Astron. Soc. Australia}  % Publications of the Astronomical Society of Australia
+\def\procspie{\ref@jnl{Proc.~SPIE}}           % Proceedings of the SPIE
+\def\rmxaa{\ref@jnl{Rev. Mex. Astron. Astrofis.}}
+\def\ssr{\ref@jnl{Space~Sci.~Rev.}}           % Space Science Reviews
+\def\zap{\ref@jnl{ZAp}}                       % Zeitschrift fuer Astrophysik
 
 \let\astap=\aap
 \let\apjlett=\apjl
@@ -73,7 +78,7 @@
 
 % use comma instead of point
 \renewcommand*{\newunitpunct}{\addcomma\space}
-% nothing point at the end of the reference
+% no point at the end of the reference
 \renewcommand*{\finentrypunct}{} 
 }
 
@@ -95,10 +100,16 @@
 % https://tex.stackexchange.com/questions/33565/displaying-only-the-starting-page-of-a-page-range-in-bibliographies
 %\DeclareFieldFormat[article]{pages}{\mkfirstpage[{\mkpageprefix[bookpagination]}]{#1}}
 \DeclareFieldFormat[article]{pages}{\mkfirstpage{#1}}
-
-% set the journal name in roman
+\DeclareFieldFormat{pages}{#1}
+% set title, journaltitle and booktitle in roman
 % https://tex.stackexchange.com/questions/454672/biblatex-journal-name-non-italic
+\DeclareFieldFormat{title}{\mkbibemph{#1}\isdot}
 \DeclareFieldFormat{journaltitle}{#1\isdot}
+\DeclareFieldFormat{booktitle}{#1\isdot}
+% remove or add quotes to title
+\DeclareFieldFormat[inbook,unpublished]{title}{\mkbibemph{#1\isdot}}
+%\DeclareFieldFormat[book,inbook]{title}{\mkbibquote{#1\isdot}}
+%\DeclareFieldFormat[inproceedings]{volume}{#1\isdot}
 
 % order of surname and first name in bibliography
 \DeclareNameAlias{sortname}{family-given}
@@ -154,7 +165,7 @@
 \DeclareDatamodelFields[type=field,datatype=verbatim]{adsurl}
 \DeclareDatamodelEntryfields{adsurl}
 
-\DeclareFieldFormat{link1}{%
+\DeclareFieldFormat{first_link}{%
   \iffieldundef{doi}{%
     \iffieldundef{eprint}{%
       \iffieldundef{doi}{%
@@ -174,7 +185,7 @@
   }%
 }
 
-\DeclareFieldFormat{link2}{%
+\DeclareFieldFormat{second_link}{%
   \iffieldundef{adsurl}{%
     \iffieldundef{eprint}{%
       \iffieldundef{doi}{%
@@ -200,8 +211,10 @@
       {}
       {\printtext{%
      \addperiod\space\printfield{labelyear}%
-     \printfield{extradate}}}}
+     \printfield{extradate}}}
+}
 
+% examples for different styles https://www.bibtex.com/s/bibliography-style-mnras-mnras/
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{begentry}%
@@ -209,11 +222,11 @@
   \newunit\newblock
   \usebibmacro{date+extrayear}%
   \newunit\newblock
-  \printtext[link1]{%
+  \printtext[first_link]{%
   \usebibmacro{journal}%
     }%
   \newunit
-  \printtext[link2]{%
+  \printtext[second_link]{%
   \printfield{volume}%
   \newunit
   \printfield{pages}%
@@ -221,7 +234,8 @@
   \newunit\newblock 
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
-  \usebibmacro{finentry}}
+  \usebibmacro{finentry}
+}
 
 \DeclareBibliographyDriver{inproceedings}{%
   \usebibmacro{begentry}%
@@ -229,34 +243,92 @@
   \newunit\newblock
   \printfield{year}%  
   \newunit\newblock
-  \printtext[link1]{%
+  \printtext[first_link]{%
   \usebibmacro{booktitle}%
-    }%
+  }%
   \newunit
-  \printtext[link2]{%
-  \printfield{pages}%
+  \printtext[second_link]{%
+  \printfield{volume}% vol. if volume and pages exist
+  \newunit
+  \printfield{pages}% volume and pages are often identical
   }%
   \newunit\newblock 
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
-  \usebibmacro{finentry}}
+  \usebibmacro{finentry}
+}
 
 \DeclareBibliographyDriver{book}{%
-  %\usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \printnames{author}%
   \newunit\newblock
   \printfield{year}%
   \newunit\newblock
-  \printtext[link1]{%
-  \printlist{publisher}%
-    }%
-  \newunit
-  \printtext[link2]{%
+  \printtext[first_link]{%
   \printfield{title}%
+  }%
+  \newunit
+  \printtext[second_link]{%
+  \printlist{publisher}%
   }%
   \newunit\newblock 
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
-  \usebibmacro{finentry}}
+  \usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printnames{author}%
+  \newunit\newblock
+  \printfield{year}%
+  \newunit\newblock
+  \printfield{booktitle}
+  \newunit\newblock
+  \printtext[first_link]{%
+  \printfield{title}%
+  }%
+  \newunit
+  \printtext[second_link]{%
+  \printfield{pages}%
+  }%
+  \newunit\newblock 
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{misc}{%
+  \usebibmacro{begentry}%
+  \printnames{author}%
+  \newunit\newblock
+  \printfield{year}%
+  \newunit\newblock
+  \printtext[first_link]{%
+  \printfield{title}%
+  }%
+  \newunit
+  \printtext[second_link]{%
+  \printlist{publisher}%
+  }%
+  \newunit\newblock 
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{unpublished}{%
+  \usebibmacro{begentry}%
+  \printnames{author}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printfield{title}%
+  \newunit\newblock 
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}
+}
+
 

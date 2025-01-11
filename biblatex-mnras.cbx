@@ -6,7 +6,6 @@
 %% Released under the LaTeX Project Public License v1.3c or later
 %% See http://www.latex-project.org/lppl.txt
 %% ---------------------------------------------------------------
-%% 
 
 \ProvidesFile{biblatex-mnras.cbx}[2022/06/10 v1.0 biblatex citation style]
 
@@ -32,7 +31,6 @@ uniquelist=false
 % https://tex.stackexchange.com/questions/48846/biblatex-et-al-beginning-from-second-citation
 \AtEveryCitekey{\ifciteseen{}{\defcounter{maxnames}{3}}}
 
-
 % the citealias commands (from natbib=true) do not contain hyperlinks
 \DeclareCiteCommand{\citetalias}
   {\usebibmacro{prenote}}
@@ -47,4 +45,3 @@ uniquelist=false
    \printtext[bibhyperref]{\@citealias{\thefield{entrykey}}}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
-
